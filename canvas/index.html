@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+#cas{
+    border:1px solid #ccc;
+}
+#animate{
+    border:1px solid #ccc;
+}
+</style>
+<body>
+    <canvas width='300' height='300' id='cas'></canvas>
+    <canvas width='500' height='300' id='animate'>浏览器版本过低，不支持canvas，请升级</canvas>
+</body>
+</html>
+<script>
+var cas = document.getElementById('cas');
+var ctx = cas.getContext('2d');
+//矩形
+// ctx.fillStyle = 'red';
+// ctx.fillRect(0,0,10,300);
+
+var r = 30, leftSite = 10, x = 100-r, y = 150;
+// var st = setInterval(function(){
+//     x--;
+//     if(x==r+leftSite){
+//         alert('撞上了');
+//         clearInterval(st);
+//     }else{
+//         strokeArc(x)
+//     }
+// },50)
+
+function strokeArc(){
+    ctx.clearRect(0,0,300,300);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0,0,10,300);
+    ctx.strokeStyle="green";
+    ctx.beginPath();
+    ctx.arc(x,y,r,0,Math.PI*2,true);
+    ctx.closePath();
+    ctx.stroke();
+}
+strokeArc()
+
+cas.onmousedown = function(e){
+    var dx = e.clientX, dy = e.clientY;
+    if( dx<x+30 && dx>x-30 && dy<y+30 && dy>y-30 ){
+        cas.onmousemove = function(e){
+            x = e.clientX, y = e.clientY;
+            strokeArc();
+        }
+    }
+}
+cas.onmouseup = function(){
+    cas.onmousemove = null;
+}
+ctx.beginPath();
+ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+ctx.moveTo(110,75);
+ctx.arc(75,75,35,0,Math.PI,false);   // 口(顺时针)
+ctx.moveTo(65,65);
+ctx.arc(60,65,5,0,Math.PI*2,true);  // 左眼
+ctx.moveTo(95,65);
+ctx.arc(90,65,5,0,Math.PI*2,true);  // 右眼
+ctx.stroke();
+
+var canvas = document.getElementById('animate');
+var cvs = canvas.getContext('2d');
+var raf;
+var ball = {
+    x: 100,
+    y: 100,
+    radius: 30,
+    sx: 5,
+    sy: 3,
+    color: 'blue',
+    draw: function(){
+        cvs.beginPath();
+        cvs.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
+        cvs.closePath();
+        cvs.fillStyle = this.color;
+        cvs.fill();
+    }
+}
+function draw(){
+    var x = ball.x, y = ball.y, r = ball.radius;
+    var w = canvas.width, h = canvas.height;
+
+    //添加加速度，实现弹跳效果
+    // ball.sy *= .99;
+    // ball.sy += .25;
+
+    if( x+r > w || x-r < 0 ){
+        ball.sx = -ball.sx
+    }
+    if( y+r > h || y-r < 0 ){
+        ball.sy = -ball.sy
+    }
+    
+    //清除画布，添加长尾效果
+    cvs.fillStyle = 'rgba(255,255,255,0.3)';
+    cvs.fillRect(0, 0, w ,h);
+
+    //清除画布
+    // cvs.clearRect(0, 0, w, h);
+    
+    ball.draw();
+    ball.x += ball.sx;
+    ball.y += ball.sy;
+    raf = window.requestAnimationFrame(draw);
+}
+canvas.addEventListener('mouseover', function(){
+    raf = window.requestAnimationFrame(draw);
+}, true)
+canvas.addEventListener('mouseout', function(){
+    window.cancelAnimationFrame(raf);
+}, true)
+ball.draw();
+</script>

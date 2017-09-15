@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- <?xml-stylesheet type='text/css' href='test.css'?> -->
+<?xml-stylesheet type="text/xsl" href="test.xsl"?>
+<note>
+<info>
+    <to>Ds</to>
+    <from>Xyh</from>
+    <heading>lover</heading>
+    <body>
+    I fall in love with you
+    </body>
+</info>
+<info>
+    <to>Ds</to>
+    <from>Xyh</from>
+    <heading>lover</heading>
+    <body>
+    I fall in love with you
+    </body>
+</info>  
+</note>

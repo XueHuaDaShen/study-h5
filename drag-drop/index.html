@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>drag-drop</title>
+<style>
+#div1, #div2 {
+    width:200px;
+    min-height:96px;
+    padding:10px;
+    border:1px solid #aaaaaa;
+}
+</style>
+<script type="text/javascript">
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+        
+    function drag(ev) {
+        ev.dataTransfer.setData("Text",ev.target.id);
+    }
+        
+    function drop(ev) {
+        ev.preventDefault();
+        var data=ev.dataTransfer.getData("Text");
+        var img = document.getElementById(data);
+        var div = ev.target;
+        var findStyle = div.currentStyle ? div.currentStyle : document.defaultView.getComputedStyle(div, null)
+        var w = findStyle.width;
+        img.style.width = w;
+        ev.target.appendChild(img);
+    }
+</script>
+</head>
+<body ondrop="drop(event)" ondragover="allowDrop(event)">
+        
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        
+    </div>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <img id="drag1" src="./img/bg.gif" draggable="true" ondragstart="drag(event)" width="100%" />
+    
+        
+</body>
+</html>

@@ -1,0 +1,13 @@
+*{
+    display:block;
+    padding:10px;
+}
+to{
+    color:blue;
+}
+from{
+    color:green;
+}
+heading{
+    color:red;
+}

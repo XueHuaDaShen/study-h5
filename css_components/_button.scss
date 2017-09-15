@@ -1,0 +1,13 @@
+$padd1: 5px 10px, 15px 20px;
+$mar: 0 10px, 0 20px;
+@mixin btnStyle($pp,$begin,$end,$fc,$mm){
+    padding:$pp;
+    background: -moz-linear-gradient(top, $begin 0%, $end 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$begin), color-stop(100%,$end));
+    background: -webkit-linear-gradient(top, $begin 0%,$end 100%);
+    background: -o-linear-gradient(top, $begin 0%,$end 100%);
+    background: -ms-linear-gradient(top, $begin 0%,$end 100%);
+    border:1px solid #ccc;
+    color:$fc;
+    margin:$mm;
+}
