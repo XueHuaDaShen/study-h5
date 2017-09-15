@@ -1,0 +1,21 @@
+video {
+  width: 300px;
+  height: auto;
+}
+
+.ctrl {
+  width: 300px;
+}
+.ctrl button {
+  padding: 5px 10px;
+  background: -moz-linear-gradient(top, #bfbfbf 0%, #ccc 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bfbfbf), color-stop(100%, #ccc));
+  background: -webkit-linear-gradient(top, #bfbfbf 0%, #ccc 100%);
+  background: -o-linear-gradient(top, #bfbfbf 0%, #ccc 100%);
+  background: -ms-linear-gradient(top, #bfbfbf 0%, #ccc 100%);
+  border: 1px solid #ccc;
+  color: 24px;
+  margin: 0 10px;
+}
+
+/*# sourceMappingURL=index.css.map */

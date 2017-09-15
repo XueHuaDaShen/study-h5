@@ -1,0 +1,14 @@
+@import '../../../css_components/button';
+$c:#ccc;
+$bc:darken($c,5%);
+$ec:darken($c,7%);
+video{
+    width:300px;
+    height:auto;
+}
+.ctrl{
+    width:300px;
+    button{
+        @include btnStyle(nth($padd1,1),$bc,$c,24px,nth($mar,1))
+    }
+}
