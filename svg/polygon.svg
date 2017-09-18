@@ -3,7 +3,7 @@
 
 <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
 
-<circle cx="42" cy="42" r="40" stroke="black" stroke-width="2" fill="red"/>
-<rect x='87' y='10' stroke='red' width='100' height='30' stroke-width='3' fill='blue'  />
+<polygon points="25,0 0,50 50,50" style="fill:#cccccc;stroke:#000000;stroke-width:1"/>
+<polygon points="78,2 220,2 298,148 2,148" style="fill:#cccccc;stroke:#000000;stroke-width:1"/>
 
 </svg>
